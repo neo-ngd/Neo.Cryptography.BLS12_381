@@ -1,10 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<OutputType>library</OutputType>
+		<Copyright>2015-2022 The Neo Project</Copyright>
+		<AssemblyTitle>Neo.Cryptography.BLS12_381</AssemblyTitle>
+		<VersionPrefix>0.0.1</VersionPrefix>
+		<Authors>NGD</Authors>
 		<TargetFramework>net6.0</TargetFramework>
-		<VersionPrefix>0.0.3</VersionPrefix>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<AssemblyName>Neo.Cryptography.BLS12_381</AssemblyName>
+		<PackageId>Neo.Cryptography.BLS12_381</PackageId>
+		<PackageTags>NEO;AntShares;Blockchain;BLS12_381</PackageTags>
+		<PackageProjectUrl>https://github.com/neo-ngd/Neo.Cryptography.BLS12_381</PackageProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/neo-ngd/Neo.Cryptography.BLS12_381.git</RepositoryUrl>
+		<RootNamespace>Neo</RootNamespace>
+		<Company>The Neo Project</Company>
+		<Description>A wrapper library of BLS</Description>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>		
 	</PropertyGroup>
 	<ItemGroup>
 		<None Update="runtimes\**">
