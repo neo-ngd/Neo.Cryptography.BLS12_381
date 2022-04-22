@@ -5,11 +5,7 @@ VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{67B39239-430F-4B33-8128-E9BDA8D9EBD6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A225EDA9-0165-4795-B8AE-4AB2F91B7B2E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neo.Cryptography.BLS12_381", "src\Neo.Cryptography.BLS12_381\Neo.Cryptography.BLS12_381.csproj", "{0C374AC7-4826-4D31-8357-1B17D7A1EE9F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neo.Cryptography.BLS12_381.UnitTests", "tests\Neo.Cryptography.BLS12_381.UnitTests\Neo.Cryptography.BLS12_381.UnitTests.csproj", "{EEF4EA1D-D3F7-491A-B22A-7BC6FDC702F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,17 +17,12 @@ Global
 		{0C374AC7-4826-4D31-8357-1B17D7A1EE9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C374AC7-4826-4D31-8357-1B17D7A1EE9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C374AC7-4826-4D31-8357-1B17D7A1EE9F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EEF4EA1D-D3F7-491A-B22A-7BC6FDC702F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEF4EA1D-D3F7-491A-B22A-7BC6FDC702F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EEF4EA1D-D3F7-491A-B22A-7BC6FDC702F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EEF4EA1D-D3F7-491A-B22A-7BC6FDC702F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0C374AC7-4826-4D31-8357-1B17D7A1EE9F} = {67B39239-430F-4B33-8128-E9BDA8D9EBD6}
-		{EEF4EA1D-D3F7-491A-B22A-7BC6FDC702F5} = {A225EDA9-0165-4795-B8AE-4AB2F91B7B2E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {29B2D155-091E-4D95-899D-E09FCD322474}
