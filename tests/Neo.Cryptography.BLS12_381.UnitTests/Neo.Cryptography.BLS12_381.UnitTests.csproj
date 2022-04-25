@@ -16,7 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Neo.Cryptography.BLS12_381\Neo.Cryptography.BLS12_381.csproj" />
+	  <ProjectReference Include="..\..\src\Neo.Cryptography.BLS12_381\Neo.Cryptography.BLS12_381.csproj" />
 	</ItemGroup>
 
 </Project>
