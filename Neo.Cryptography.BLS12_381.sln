@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{67B39239-430
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neo.Cryptography.BLS12_381", "src\Neo.Cryptography.BLS12_381\Neo.Cryptography.BLS12_381.csproj", "{0C374AC7-4826-4D31-8357-1B17D7A1EE9F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neo.Cryptography.BLS12_381.UnitTests", "src\Neo.Cryptography.BLS12_381.UnitTests\Neo.Cryptography.BLS12_381.UnitTests.csproj", "{878CF0B6-BDB4-42CA-BEF5-500CAB39B638}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8F1F16FB-6BB3-4527-BF88-19AB7F82836C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +21,17 @@ Global
 		{0C374AC7-4826-4D31-8357-1B17D7A1EE9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C374AC7-4826-4D31-8357-1B17D7A1EE9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C374AC7-4826-4D31-8357-1B17D7A1EE9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{878CF0B6-BDB4-42CA-BEF5-500CAB39B638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{878CF0B6-BDB4-42CA-BEF5-500CAB39B638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{878CF0B6-BDB4-42CA-BEF5-500CAB39B638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{878CF0B6-BDB4-42CA-BEF5-500CAB39B638}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0C374AC7-4826-4D31-8357-1B17D7A1EE9F} = {67B39239-430F-4B33-8128-E9BDA8D9EBD6}
+		{878CF0B6-BDB4-42CA-BEF5-500CAB39B638} = {8F1F16FB-6BB3-4527-BF88-19AB7F82836C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {29B2D155-091E-4D95-899D-E09FCD322474}

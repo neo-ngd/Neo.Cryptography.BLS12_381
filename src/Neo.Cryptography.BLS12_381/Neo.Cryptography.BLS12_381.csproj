@@ -20,10 +20,8 @@
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>		
 	</PropertyGroup>
+
 	<ItemGroup>
-		<None Update="runtimes\**">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</None>
+	  <PackageReference Include="Neo.Cryptography.BLS12_381.Native" Version="0.0.2" />
 	</ItemGroup>
 </Project>
