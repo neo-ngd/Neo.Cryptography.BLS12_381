@@ -29,7 +29,7 @@ namespace Neo.Cryptography.BLS12_381
             GObject p2 = new GObject(p2Binary);
             try
             {
-                return Interop.Add(p1, p2).ToByteArray((int)p1.type);
+                return Interop.Add(p1, p2).ptr.ToByteArray((int)p1.type);
             }
             catch (Exception e)
             {
@@ -49,7 +49,7 @@ namespace Neo.Cryptography.BLS12_381
             {
                 GObject p = multi < 0 ? new GObject(pBinary).Neg() : new GObject(pBinary);
                 var x = Convert.ToUInt64(Math.Abs(multi));
-                return Interop.Mul(p, x).ToByteArray((int)p.type);
+                return Interop.Mul(p, x).ptr.ToByteArray((int)p.type);
             }
             catch (Exception e)
             {
@@ -67,7 +67,10 @@ namespace Neo.Cryptography.BLS12_381
         {
             try
             {
-                return Interop.g1_g2_pairing(new GObject(g1Binary).ptr, new GObject(g2Binary).ptr).ToByteArray(576);
+                GObject p1 = new GObject(g1Binary);
+                GObject p2 = new GObject(g2Binary);
+                GObject result = Interop.Pairing(p1, p2);
+                return result.ptr.ToByteArray(576);
             }
             catch (Exception e)
             {
