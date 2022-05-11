@@ -57,14 +57,14 @@ namespace Neo.Cryptography.BLS12_381
 
         public GObject Neg()
         {
-            ptr = type switch
+            GObject G = type switch
             {
-                GType.G1 => Interop.g1_neg(ptr),
-                GType.G2 => Interop.g2_neg(ptr),
-                GType.Gt => Interop.gt_neg(ptr),
+                GType.G1 => new GObject(GType.G1, Interop.g1_neg(ptr)),
+                GType.G2 => new GObject(GType.G2, Interop.g2_neg(ptr)),
+                GType.Gt => new GObject(GType.Gt, Interop.gt_neg(ptr)),
                 _ => throw new Exception($"Bls12381 operation fault, type:format, error:valid point length")
             };
-            return this;
+            return G;
         }
     }
 }
