@@ -79,7 +79,6 @@ namespace Neo.Cryptography.BLS12_381
             GObject gt = new GObject(GType.Gt, Interop.g1_g2_pairing(p1.ptr, p2.ptr));
             return gt;
         }
-    
 
         public static byte[] ToByteArray(this IntPtr data, int length)
         {
