@@ -33,15 +33,6 @@ namespace Neo.Cryptography.BLS12_381
         public static extern IntPtr g2_neg(IntPtr g2);
 
         [DllImport("Neo_Cryptography_BLS12_381_Native", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void gt_dispose(IntPtr rawPtr);
-
-        [DllImport("Neo_Cryptography_BLS12_381_Native", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void g1_dispose(IntPtr rawPtr);
-
-        [DllImport("Neo_Cryptography_BLS12_381_Native", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void g2_dispose(IntPtr rawPtr);
-
-        [DllImport("Neo_Cryptography_BLS12_381_Native", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr g1_g2_pairing(IntPtr g1, IntPtr g2);
 
         public static GObject Add(GObject p1, GObject p2)

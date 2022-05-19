@@ -34,20 +34,8 @@ namespace Neo.Cryptography.BLS12_381
         {
             try
             {
-                switch (type)
-                {
-                    case GType.G1:
-                        Interop.g1_dispose(ptr);
-                        break;
-                    case GType.G2:
-                        Interop.g2_dispose(ptr);
-                        break;
-                    case GType.Gt:
-                        Interop.gt_dispose(ptr);
-                        break;
-                    default:
-                        throw new Exception($"Bls12381 operation fault, type:format, error:type mismatch");
-                }
+                Marshal.FreeHGlobal(ptr);
+                //ptr = IntPtr.Zero;
             }
             catch (Exception)
             {
