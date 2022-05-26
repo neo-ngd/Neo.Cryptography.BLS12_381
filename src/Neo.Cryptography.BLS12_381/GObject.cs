@@ -31,17 +31,12 @@ namespace Neo.Cryptography.BLS12_381
 
         ~GObject()
         {
-            switch (size)
+            try {
+                Marshal.FreeHGlobal(ptr);
+            }
+            catch (Exception)
             {
-                case G1:
-                    Interop.g1_dispose(ptr);
-                    break;
-                case G2:
-                    Interop.g2_dispose(ptr);
-                    break;
-                case Gt:
-                    Interop.gt_dispose(ptr);
-                    break;
+                throw new Exception($"Bls12381 operation falut,type:format,error:dispose failed");
             }
         }
 
