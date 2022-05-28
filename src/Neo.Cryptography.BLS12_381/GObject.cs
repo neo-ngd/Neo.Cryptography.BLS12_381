@@ -3,88 +3,83 @@ using System.Runtime.InteropServices;
 
 namespace Neo.Cryptography.BLS12_381
 {
-    public class GObject
+    public readonly struct GObject
     {
         private const int G1 = 96;
         private const int G2 = 192;
         private const int Gt = 576;
 
-        private readonly IntPtr ptr;
-        private readonly int size;
+        private readonly byte[] data;
+
+        public int Size => data.Length;
 
         private GObject(IntPtr ptr, int size)
         {
-            this.ptr = ptr;
-            this.size = size;
+            data = GC.AllocateUninitializedArray<byte>(size);
+            Marshal.Copy(ptr, data, 0, size);
+            Marshal.FreeHGlobal(ptr);
         }
 
         public GObject(byte[] g)
         {
-            size = g.Length;
-            if (size is G1 or G2 or Gt)
+            data = g.Length switch
             {
-                ptr = Marshal.AllocHGlobal(size);
-                Marshal.Copy(g, 0, ptr, size);
-            }
-            else throw new Exception($"Bls12381 operation fault, type:format, error:valid point length");
-        }
-
-        ~GObject()
-        {
-            Marshal.FreeHGlobal(ptr);
-        }
-
-        public GObject Neg()
-        {
-            return size switch
-            {
-                G1 => new GObject(Interop.g1_neg(ptr), G1),
-                G2 => new GObject(Interop.g2_neg(ptr), G2),
-                Gt => new GObject(Interop.gt_neg(ptr), Gt),
+                G1 or G2 or Gt => g,
                 _ => throw new Exception($"Bls12381 operation fault, type:format, error:valid point length")
             };
         }
 
-        public static GObject Add(GObject p1, GObject p2)
+        public unsafe GObject Neg()
         {
-            if (p1.size != p2.size)
-            {
+            fixed (byte* ptr = data)
+                return Size switch
+                {
+                    G1 => new GObject(Interop.g1_neg(ptr), G1),
+                    G2 => new GObject(Interop.g2_neg(ptr), G2),
+                    Gt => new GObject(Interop.gt_neg(ptr), Gt),
+                    _ => throw new Exception($"Bls12381 operation fault, type:format, error:valid point length")
+                };
+        }
+
+        public unsafe static GObject Add(GObject p1, GObject p2)
+        {
+            if (p1.Size != p2.Size)
                 throw new Exception($"Bls12381 operation fault, type:format, error:type mismatch");
-            }
-            return p1.size switch
-            {
-                G1 => new GObject(Interop.g1_add(p1.ptr, p2.ptr), G1),
-                G2 => new GObject(Interop.g2_add(p1.ptr, p2.ptr), G2),
-                Gt => new GObject(Interop.gt_add(p1.ptr, p2.ptr), Gt),
-                _ => throw new Exception($"Bls12381 operation fault, type:format, error:valid point length")
-            };
+            fixed (byte* ptr1 = p1.data, ptr2 = p2.data)
+                return p1.Size switch
+                {
+                    G1 => new GObject(Interop.g1_add(ptr1, ptr2), G1),
+                    G2 => new GObject(Interop.g2_add(ptr1, ptr2), G2),
+                    Gt => new GObject(Interop.gt_add(ptr1, ptr2), Gt),
+                    _ => throw new Exception($"Bls12381 operation fault, type:format, error:valid point length")
+                };
         }
 
-        public static GObject Mul(GObject p, ulong x)
+        public unsafe static GObject Mul(GObject p, ulong x)
         {
-            return p.size switch
-            {
-                G1 => new GObject(Interop.g1_mul(p.ptr, x), G1),
-                G2 => new GObject(Interop.g2_mul(p.ptr, x), G2),
-                Gt => new GObject(Interop.gt_mul(p.ptr, x), Gt),
-                _ => throw new Exception($"Bls12381 operation fault, type:format, error:valid point length")
-            };
+            fixed (byte* ptr = p.data)
+                return p.Size switch
+                {
+                    G1 => new GObject(Interop.g1_mul(ptr, x), G1),
+                    G2 => new GObject(Interop.g2_mul(ptr, x), G2),
+                    Gt => new GObject(Interop.gt_mul(ptr, x), Gt),
+                    _ => throw new Exception($"Bls12381 operation fault, type:format, error:valid point length")
+                };
         }
 
-        public static GObject Pairing(GObject p1, GObject p2)
+        public unsafe static GObject Pairing(GObject p1, GObject p2)
         {
-            if (p1.size != G1 || p2.size != G2)
-            {
+            if (p1.Size != G1 || p2.Size != G2)
                 throw new Exception($"Bls12381 operation fault, type:format, error:type mismatch");
-            }
-            return new(Interop.g1_g2_pairing(p1.ptr, p2.ptr), Gt);
+            fixed (byte* ptr1 = p1.data, ptr2 = p2.data)
+                return new(Interop.g1_g2_pairing(ptr1, ptr2), Gt);
         }
 
         public byte[] ToByteArray()
         {
-            byte[] buffer = GC.AllocateUninitializedArray<byte>(size);
-            Marshal.Copy(ptr, buffer, 0, buffer.Length);
-            return buffer;
+            return data;
         }
+
+        public static implicit operator GObject(byte[] data) => new(data);
     }
 }

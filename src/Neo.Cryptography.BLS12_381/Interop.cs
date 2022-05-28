@@ -3,36 +3,36 @@ using System.Runtime.InteropServices;
 
 namespace Neo.Cryptography.BLS12_381
 {
-    static class Interop
+    static unsafe class Interop
     {
         [DllImport("Neo_Cryptography_BLS12_381_Native", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr gt_add(IntPtr gt1, IntPtr gt2);
+        public static extern IntPtr gt_add(byte* gt1, byte* gt2);
 
         [DllImport("Neo_Cryptography_BLS12_381_Native", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr gt_mul(IntPtr gt, ulong multi);
+        public static extern IntPtr gt_mul(byte* gt, ulong multi);
 
         [DllImport("Neo_Cryptography_BLS12_381_Native", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr gt_neg(IntPtr gt);
+        public static extern IntPtr gt_neg(byte* gt);
 
         [DllImport("Neo_Cryptography_BLS12_381_Native", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr g1_add(IntPtr g1_1, IntPtr g1_2);
+        public static extern IntPtr g1_add(byte* g1_1, byte* g1_2);
 
         [DllImport("Neo_Cryptography_BLS12_381_Native", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr g1_mul(IntPtr g1, ulong multi);
+        public static extern IntPtr g1_mul(byte* g1, ulong multi);
 
         [DllImport("Neo_Cryptography_BLS12_381_Native", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr g1_neg(IntPtr g1);
+        public static extern IntPtr g1_neg(byte* g1);
 
         [DllImport("Neo_Cryptography_BLS12_381_Native", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr g2_add(IntPtr g2_1, IntPtr g2_2);
+        public static extern IntPtr g2_add(byte* g2_1, byte* g2_2);
 
         [DllImport("Neo_Cryptography_BLS12_381_Native", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr g2_mul(IntPtr g2, ulong multi);
+        public static extern IntPtr g2_mul(byte* g2, ulong multi);
 
         [DllImport("Neo_Cryptography_BLS12_381_Native", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr g2_neg(IntPtr g2);
+        public static extern IntPtr g2_neg(byte* g2);
 
         [DllImport("Neo_Cryptography_BLS12_381_Native", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr g1_g2_pairing(IntPtr g1, IntPtr g2);
+        public static extern IntPtr g1_g2_pairing(byte* g1, byte* g2);
     }
 }
